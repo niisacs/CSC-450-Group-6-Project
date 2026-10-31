@@ -1,7 +1,8 @@
-"""Training worker integrating MetricBuffer for step-by-step metric logging."""
+"""Training worker integrating MetricBuffer for step metrics."""
 
 from __future__ import annotations
 
+from forge.gpu import free_gpu_memory
 import math
 import uuid
 from collections.abc import Callable
@@ -147,3 +148,15 @@ class TrainingWorker:
             finally:
                 session.close()
             raise
+
+_original_run_training_loop = TrainingWorker.run_training_loop
+
+
+def _run_training_loop_with_gpu_cleanup(self, *args, **kwargs):
+    try:
+        return _original_run_training_loop(self, *args, **kwargs)
+    finally:
+        free_gpu_memory()
+
+
+TrainingWorker.run_training_loop = _run_training_loop_with_gpu_cleanup
