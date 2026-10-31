@@ -52,6 +52,7 @@ def test_gpu_cleanup_after_successful_training(tmp_path):
 
     engine.dispose()
 
+
 def test_gpu_cleanup_after_stopped_training(tmp_path):
     from uuid import uuid4
 
@@ -98,6 +99,7 @@ def test_gpu_cleanup_after_stopped_training(tmp_path):
     cleanup.assert_called_once()
 
     engine.dispose()
+
 
 def test_gpu_cleanup_after_failed_training(tmp_path):
     from uuid import uuid4
@@ -148,4 +150,3 @@ def test_gpu_cleanup_after_failed_training(tmp_path):
 
     cleanup.assert_called_once()
     engine.dispose()
-

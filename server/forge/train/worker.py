@@ -149,6 +149,7 @@ class TrainingWorker:
                 session.close()
             raise
 
+
 _original_run_training_loop = TrainingWorker.run_training_loop
 
 
