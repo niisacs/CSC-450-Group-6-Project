@@ -146,6 +146,7 @@ def test_gpu_cleanup_after_failed_training(tmp_path):
 
     with SessionMaker() as session:
         failed_run = session.get(Run, run_id)
+        assert failed_run is not None
         assert failed_run.status == "failed"
 
     cleanup.assert_called_once()
