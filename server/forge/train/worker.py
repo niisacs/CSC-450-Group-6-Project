@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from forge.gpu import free_gpu_memory
 import math
 import uuid
 from collections.abc import Callable
@@ -12,6 +11,7 @@ from typing import TYPE_CHECKING
 from sqlalchemy.orm import Session
 
 from forge.db import open_session
+from forge.gpu import free_gpu_memory
 from forge.models import Run
 from forge.train.metrics import MetricBuffer
 

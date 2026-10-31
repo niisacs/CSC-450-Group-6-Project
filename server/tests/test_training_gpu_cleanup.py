@@ -1,7 +1,7 @@
-import pytest
 import uuid
 from unittest.mock import patch
 
+import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
